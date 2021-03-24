@@ -2,7 +2,9 @@ import { useGlobalContext } from "../context";
 
 const Gifs = () => {
   const { gifs } = useGlobalContext();
+
   console.log(gifs);
+
   let showGifs =
     gifs.length !== 0
       ? gifs.map((item, index) => {
@@ -11,11 +13,18 @@ const Gifs = () => {
             images: {
               downsized_large: { url },
             },
+            user: { banner_url },
+            username,
           } = item;
+
           return (
-            <div key={index}>
+            <a href="/a" key={index} className="gif card">
               <img src={url} alt="" />
-            </div>
+              <div className="info">
+                <img src={banner_url} alt="" />
+                <p>{username}</p>
+              </div>
+            </a>
           );
         })
       : "";

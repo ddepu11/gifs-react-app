@@ -7,20 +7,6 @@
   align-items: center;
 }
 
-.card {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-image: linear-gradient(
-    to right top,
-    #8492ed,
-    #c176d8,
-    #ed52a8,
-    #fd3a65,
-    #eb4b12
-  );
-  padding: 10px 25px;
-  border-radius: 20px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -29,8 +15,23 @@
 }
 body {
   min-height: 100vh;
-  background: linear-gradient(to right, #000000, #434343);
+  background-image: linear-gradient(
+    to right top,
+    #6bd1a0,
+    #00cdc1,
+    #00c5e2,
+    #00b9f9,
+    #52a7ff,
+    #41abff,
+    #2bafff,
+    #00b3ff,
+    #00cdff,
+    #00e2ea,
+    #00f2b1,
+    #5ffb66
+  );
   color: white;
+  padding: 20px 20px;
 }
 .container {
   max-width: 1200px;
@@ -60,4 +61,46 @@ input {
 button:focus,
 input:focus {
   outline: 0;
+}
+.card {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+.gif {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+.gif img {
+  height: 250px;
+}
+.hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  grid-template-rows: minmax(200px, auto);
+  gap: 20px;
+}
+img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.info {
+  height: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0%;
+  width: 100%;
+  background: rgb(194, 194, 194);
+  transition: all 0.5s ease-in;
+  color: white;
+}
+.info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.gif:hover .info {
+  height: auto;
 }
