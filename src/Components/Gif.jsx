@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import Loading from "./Loading";
 import { useGlobalContext } from "../context";
+import { Link } from "react-router-dom";
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Gif = () => {
@@ -10,7 +11,6 @@ const Gif = () => {
   const endPoint = `https://api.giphy.com/v1/gifs/${id}?api_key=${API_KEY}`;
 
   useFetch(endPoint);
-  console.log(gif);
   let toShow = loading ? (
     "asad"
   ) : (
@@ -25,7 +25,16 @@ const Gif = () => {
     </div>
   );
 
-  return <main className="main">{loading ? <Loading /> : toShow}</main>;
+  return (
+    <main className="main">
+      {loading ? <Loading /> : toShow}
+      {!loading && (
+        <Link to="/" className="home-btn">
+          Go Back Home
+        </Link>
+      )}
+    </main>
+  );
 };
 
 export default Gif;

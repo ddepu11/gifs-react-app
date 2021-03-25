@@ -141,6 +141,7 @@ img {
 }
 .main {
   padding: 50px 20px;
+  text-align: center;
 }
 .single_gif {
   display: grid;
@@ -171,6 +172,7 @@ img {
   width: 70px;
   height: 70px;
   border-radius: 50%;
+  object-fit: cover;
   grid-area: di;
 }
 .details span {
@@ -194,4 +196,24 @@ img {
   font-size: 1.1em;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.home-btn {
+  margin-top: 50px;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: cyan;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+.search_form {
+  padding: 20px;
+}
+.search_form input,
+button {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  color: #333;
 }

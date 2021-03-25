@@ -42,6 +42,14 @@ const Gifs = () => {
       <Loading />
     );
 
-  return <main className="hero">{showGifs}</main>;
+  return (
+    <>
+      <form className="search_form">
+        <input type="text" placeholder="Search for sticker" />
+        <button type="submit">Search</button>
+      </form>
+      <main className="hero">{showGifs}</main>;
+    </>
+  );
 };
 export default Gifs;
