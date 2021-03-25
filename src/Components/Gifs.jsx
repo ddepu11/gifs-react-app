@@ -2,22 +2,43 @@ import { useGlobalContext } from "../context";
 import Loading from "./Loading";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import { useFetch } from "../useFetch";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
+let endPoint = `https://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=10&rating=g`;
 
 const Gifs = () => {
-  const { gifs } = useGlobalContext();
+  const { gifs, term, loading } = useGlobalContext();
 
+  if (term !== "") {
+    endPoint = `https://api.giphy.com/v1/stickers/search?api_key=${API_KEY}&q=${term.trim()}&limit=20&offset=0&rating=g&lang=en`;
+  }
+
+  useFetch(endPoint, [term]);
+  console.log(gifs);
   let showGifs =
-    gifs.length !== 0 ? (
+    loading === false ? (
       gifs.map((item, index) => {
-        let {
-          id,
-          images: {
-            downsized_large: { url },
-          },
-          user: { avatar_url },
-          username,
-          trending_datetime,
-        } = item;
+        if (term) {
+          var {
+            id,
+            images: {
+              downsized_large: { url },
+            },
+            username,
+            trending_datetime,
+          } = item;
+        } else {
+          var {
+            id,
+            images: {
+              downsized_large: { url },
+            },
+            user: { avatar_url },
+            username,
+            trending_datetime,
+          } = item;
+        }
 
         trending_datetime = new Date(trending_datetime).toLocaleDateString();
 
@@ -25,8 +46,8 @@ const Gifs = () => {
           <Link to={`/gif/${id}`} key={index} className="gif card">
             <img src={url} alt="" />
             <div className="info">
-              {avatar_url !== "" ? (
-                <img src={avatar_url} alt="s" className="avatar" />
+              {avatar_url !== "" && avatar_url ? (
+                <img src={avatar_url} alt={username} className="avatar" />
               ) : (
                 <FcBusinessman className="avatar" />
               )}
@@ -44,10 +65,6 @@ const Gifs = () => {
 
   return (
     <>
-      <form className="search_form">
-        <input type="text" placeholder="Search for sticker" />
-        <button type="submit">Search</button>
-      </form>
       <main className="hero">{showGifs}</main>;
     </>
   );

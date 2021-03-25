@@ -1,21 +1,17 @@
 import "./App.css";
-// import { useEffect } from "react";
-import { useFetch } from "./useFetch";
 import Gifs from "./Components/Gifs";
 import Gif from "./Components/Gif";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Search from "./Components/Search";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const endPoint = `https://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=10&rating=g`;
 
 function App() {
-  
-  useFetch(endPoint);
-  // useEffect(() => useFetch(), []);
 
   return (
     <div className="container">
       <Router>
+        <Search />
+
         <Switch>
           <Route path="/" exact>
             <Gifs />

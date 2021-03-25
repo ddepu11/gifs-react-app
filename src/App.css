@@ -209,8 +209,9 @@ img {
   border-radius: 20px;
 }
 .search_form {
-  padding: 20px;
+  padding: 20px 0px 25px;
 }
+
 .search_form input,
 button {
   font-size: 1.2em;

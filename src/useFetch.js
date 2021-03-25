@@ -2,15 +2,19 @@ import { useEffect } from "react";
 import { useGlobalContext } from "./context";
 
 const useFetch = (url) => {
-  const { setGifs, setLoading, setGif } = useGlobalContext();
+  const { setGifs, setLoading, setGif, term } = useGlobalContext();
 
   const fetchGifs = async () => {
+    setGifs([]);
+    setGif({});
     setLoading(true);
+
     try {
       const res = await fetch(url);
       const { data } = await res.json();
+
       if (Array.isArray(data)) {
-        setGifs(data);
+        setGifs([...data]);
       } else {
         const {
           images: {
@@ -44,10 +48,6 @@ const useFetch = (url) => {
     }
   };
 
-  useEffect(
-    () => fetchGifs(),
-    // eslint-disable-next-line
-    []
-  );
+  useEffect(() => fetchGifs(), [term]);
 };
 export { useFetch };
