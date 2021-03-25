@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import { FcBusinessman } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { useFetch } from "../useFetch";
+import Search from "./Search";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 let endPoint = `https://api.giphy.com/v1/stickers/trending?api_key=${API_KEY}&limit=10&rating=g`;
@@ -15,7 +16,7 @@ const Gifs = () => {
   }
 
   useFetch(endPoint, [term]);
-  console.log(gifs);
+
   let showGifs =
     loading === false ? (
       gifs.map((item, index) => {
@@ -65,6 +66,7 @@ const Gifs = () => {
 
   return (
     <>
+      <Search />
       <main className="hero">{showGifs}</main>;
     </>
   );

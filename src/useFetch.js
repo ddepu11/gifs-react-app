@@ -5,8 +5,6 @@ const useFetch = (url) => {
   const { setGifs, setLoading, setGif, term } = useGlobalContext();
 
   const fetchGifs = async () => {
-    setGifs([]);
-    setGif({});
     setLoading(true);
 
     try {

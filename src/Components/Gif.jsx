@@ -14,7 +14,7 @@ const Gif = () => {
   let toShow = loading ? (
     "asad"
   ) : (
-    <div className="single_gif">
+    <div className="single_gif card">
       <img src={gif.imgSrc} alt="s" />
       <div className="details">
         <img src={gif.avatar} alt="" />
