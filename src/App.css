@@ -140,13 +140,14 @@ img {
   letter-spacing: 4px;
 }
 .main {
+  padding: 50px 20px;
 }
 .single_gif {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, auto));
   grid-template-areas:
-    "sg det det "
-    "sg det det ";
+    "sg det ."
+    "sg . . ";
   /* gap: 10px; */
 }
 
@@ -155,11 +156,42 @@ img {
   height: 400px;
   grid-area: sg;
 }
+
 .details {
   grid-area: det;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(50px, auto));
+  grid-template-areas:
+    "di . n n "
+    "t . pr pr";
+  row-gap: 30px;
 }
-.details > img {
-  width: 80px;
-  height: 80px;
+
+.details img {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
+  grid-area: di;
+}
+.details span {
+  grid-area: n;
+  justify-self: center;
+  align-self: center;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+  text-transform: capitalize;
+}
+.details h3 {
+  grid-area: t;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin-right: 10px;
+}
+
+.details p {
+  grid-area: pr;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
