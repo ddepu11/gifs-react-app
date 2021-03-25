@@ -13,6 +13,7 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
 body {
   min-height: 100vh;
   background-image: linear-gradient(
@@ -137,4 +138,28 @@ img {
   text-transform: uppercase;
   font-size: 1.8em;
   letter-spacing: 4px;
+}
+.main {
+}
+.single_gif {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, auto));
+  grid-template-areas:
+    "sg det det "
+    "sg det det ";
+  /* gap: 10px; */
+}
+
+.single_gif > img {
+  width: 400px;
+  height: 400px;
+  grid-area: sg;
+}
+.details {
+  grid-area: det;
+}
+.details > img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
